@@ -1,11 +1,24 @@
 # ECG Interpreter Lab
 
-Real-data starter using the supplied 12-lead median ECG `.med` records.
+Versi awal aplikasi latihan interpretasi ECG menggunakan sample median waveform dari dataset ACS.
 
-The `.med` files in this dataset contain 6000 signed 16-bit samples. The first 12 samples form one time point across the 12 leads, followed by the next time point. Therefore each record is rendered as 12 leads × 500 samples.
+## Isi
+- `index.html` halaman utama
+- `app/` UI dan renderer 12-lead
+- `algorithms/` kriteria dasar yang akan dikembangkan
+- `data/cases.json` metadata sample
+- `data/med/` 36 sample `.med`
 
-Lead order used by the dataset: I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6. The limb-lead relationships in the first sample confirm the standard derivations (III≈II−I, aVR≈−(I+II)/2, aVL≈I−II/2, aVF≈II−I/2).
+## Menjalankan
+Aplikasi memakai `fetch()` untuk membaca file `.med`, jadi jangan membuka `index.html` dengan `file://`. Jalankan melalui GitHub Pages atau local web server.
 
-This repository contains only a small development subset extracted from the supplied dataset. Do not commit the full dataset.
+## Catatan data
+`.med` pada sample ini berisi 12-lead median waveform 500 Hz. Ini bukan raw 10-second ECG. Karena itu rhythm/rate dan aritmia belum dinilai otomatis pada versi ini.
 
-Open `app/index.html` through a local web server because ES modules and fetch requests may be blocked by `file://`.
+## Roadmap
+1. Renderer 12-lead yang stabil
+2. Measurement P, PR, QRS, QT, axis, ST-T
+3. RBBB/LBBB dan hypertrophy
+4. Mode latihan per langkah
+5. Raw WFDB untuk rhythm dan arrhythmia
+6. Validasi terhadap label dataset dan kasus klinis
